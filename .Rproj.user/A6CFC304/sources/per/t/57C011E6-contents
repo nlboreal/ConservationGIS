@@ -1,0 +1,27 @@
+#Extracting Data from a Raster {#extractingData}
+
+A common thing that ecologists and conservation biologists want to get data for their sample sites from different GIS layers and then use these data in different models or statistical tests.
+
+#Sampling data from a raster using points
+
+####NOTE TO ME: Revise this to match data carpentry one with the canopy layer from chapter 6### ##
+
+We use the ```aggregate``` function to get data from a raster
+
+```{r}
+plot_elevations <- aggregate(SJER_dtm, SJER_plots_utm, mean, as_points = FALSE)
+plot_elevations$SJER_dtmFULL.tif
+```
+
+To link this data into the attribute data we will use the ```mutate``` function in the package ```dplyr```. We have a lab in BIOL 1002 that teaches some of the basics of the dply package. If you're not familar with that package, just use the code below.
+
+```{r}
+mutate(SJER_plots_utm, elevation = plot_elevations$SJER_dtmFULL.tif)
+```
+
+If you examine the SJER_plots_utm data, you will see that it now has the elevation data in the attribute data. We can now use this data to do an analysis of the relationship between canopy height and elevation. 
+
+
+#Sampling data from a raster using polygons
+
+At other times, resarchers may want to sample data from a raster using a polygon. For example, we might want to know what the maximum elevation within 

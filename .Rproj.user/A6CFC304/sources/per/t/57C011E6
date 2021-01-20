@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1611174987224.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "62260422",
+    "id" : "57C011E6",
+    "lastKnownWriteTime" : 1611166425,
+    "last_content_update" : 1611166425,
+    "path" : "~/BIOL4651/GIS_R_manual/ConsBiol_SpatialAnalysis/07-ExtractingData.Rmd",
+    "project_path" : "07-ExtractingData.Rmd",
+    "properties" : {
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

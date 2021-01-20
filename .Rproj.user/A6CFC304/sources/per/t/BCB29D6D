@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1611174981029.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1212148801",
+    "id" : "BCB29D6D",
+    "lastKnownWriteTime" : 1611175946,
+    "last_content_update" : 1611175946723,
+    "path" : "~/BIOL4651/GIS_R_manual/ConsBiol_SpatialAnalysis/03-Vectors.Rmd",
+    "project_path" : "03-Vectors.Rmd",
+    "properties" : {
+        "cursorPosition" : "5,10",
+        "scrollLine" : "2"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
