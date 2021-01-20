@@ -1,0 +1,34 @@
+--- 
+title: "GIS and Spatial Analysis for Conservation Biology Using R"
+author: "Dr. Yolanda Wiersma, Memorial University"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
+---
+
+# Introduction {#intro}
+
+Many biology-relevant skills are now performed using computers: statistical analyses, mathematical modelling, managing and reformatting data, visualizing data, identifying genes from DNA sequences, constructing 3D models of proteins, and making phylogenies. Quantitative skills and best practices in data science are now being incorporated throughout the biology major.
+
+In Ecology and Conservation Biology, it is common for resarchers to use spatial mapping tools such as Geographic Information Systems (GIS). The most common GIS software is the ESRI suite of products (ArcGIS, ArcPro, ArcONline). This software is expensive, and can be time consuming to learn. While R is not a GIS SYSTEM, it has the capabilities to create maps and to do many of tye types of spatial analyses that ecolgoists owuld use a GIS for. R can also be time-consuming to learn, but because R is free, we feel it will have advantages for students in that they will always be able to access it. Many ENGOs may wish to create maps and do spatial analysis, but lack the financial resources to purchase GIS. Thus, graduates who can do anlayiss in R will be well-positioned to contribute usefully in many conservaton sectors.
+
+
+
+```{r eval=FALSE}
+install.packages("bookdown")
+# or the development version
+# devtools::install_github("rstudio/bookdown")
+```
+
+
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
