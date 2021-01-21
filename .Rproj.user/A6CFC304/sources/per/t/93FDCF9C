@@ -7,11 +7,13 @@
     "folds" : "",
     "hash" : "2405876346",
     "id" : "93FDCF9C",
-    "lastKnownWriteTime" : 1611155667,
-    "last_content_update" : 1611155667,
-    "path" : "~/BIOL4651/GIS_R_manual/ConsBiol_SpatialAnalysis/02-WhatIsGIS.Rmd",
+    "lastKnownWriteTime" : 1611240203,
+    "last_content_update" : 1611240203,
+    "path" : "~/BIOL4651/GIS_R_manual/ConsBiol_SpatialAnalysis/ConsBiol_SpatialAnalysis/02-WhatIsGIS.Rmd",
     "project_path" : "02-WhatIsGIS.Rmd",
     "properties" : {
+        "cursorPosition" : "0,0",
+        "scrollLine" : "3"
     },
     "read_only" : false,
     "read_only_alternatives" : [

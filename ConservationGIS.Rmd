@@ -1,0 +1,309 @@
+--- 
+title: "GIS and Spatial Analysis for Conservation Biology Using R"
+author: "Dr. Yolanda Wiersma, Memorial University"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
+---
+
+# Introduction {#intro}
+
+Many biology-relevant skills are now performed using computers: statistical analyses, mathematical modelling, managing and reformatting data, visualizing data, identifying genes from DNA sequences, constructing 3D models of proteins, and making phylogenies. Quantitative skills and best practices in data science are now being incorporated throughout the biology major.
+
+In Ecology and Conservation Biology, it is common for resarchers to use spatial mapping tools such as Geographic Information Systems (GIS). The most common GIS software is the ESRI suite of products (ArcGIS, ArcPro, ArcONline). This software is expensive, and can be time consuming to learn. While R is not a GIS SYSTEM, it has the capabilities to create maps and to do many of tye types of spatial analyses that ecolgoists owuld use a GIS for. R can also be time-consuming to learn, but because R is free, we feel it will have advantages for students in that they will always be able to access it. Many ENGOs may wish to create maps and do spatial analysis, but lack the financial resources to purchase GIS. Thus, graduates who can do anlayiss in R will be well-positioned to contribute usefully in many conservaton sectors.
+
+
+
+```{r eval=FALSE}
+install.packages("bookdown")
+# or the development version
+# devtools::install_github("rstudio/bookdown")
+```
+
+
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
+
+<!--chapter:end:index.Rmd-->
+
+# How to use this manual {#howto}
+
+This manual has been developed specifically for Biology students. We are increasing the focus on quantitative skills in our Biology curriculum, in response to changing demands and emphasis within the field of biology itself. In 2020, we introduce first year biology (BIOL 1001/1002) students to R software and basic statistical concepts. Other courses (BIOL 2600 - Principles of Ecology, BIOL 3295 - Population and Evolutionary Ecology and BIOL 4607 - Models in Biology) all incorporate R tools in their labs. This course will teach you some R tools relevant to spatial analysis for conservation biology. 
+
+If you are not familair with R, it is recommended that you read through the MUN Biology R Manual, which is available online [here](https://ahurford.github.io/quant-guide-all-courses/), paying special attention to chapters 2-7.
+
+While working through the manual, we recommend that you set up your computer screen so that you can see your browser and the R Studio software at the same time. You can experiment with re-sizing windows and if you have two monitors, that will be really handy. Or, if you have access to a laptop and a tablet, we recommend using RStudio on your laptop and opening the manual in the browser on your tablet so that you can move between the two easily. 
+
+<!--chapter:end:01-introduction.Rmd-->
+
+# What is GIS? {#whatIs}
+
+GIS (Geographic Information Systems) is defined as "A geographic information system (GIS) is a framework for gathering, managing, and analyzing data. Rooted in the science of geography, GIS integrates many types of data. It analyzes spatial location and organizes layers of information into visualizations using maps and 3D scenes. With this unique capability, GIS reveals deeper insights into data, such as patterns, relationships, and situations—helping users make smarter decisions." (ESRI.com)
+
+Many people think GIS is simply software for making maps. While you can make maps with a GIS, that is not the real purpose (to make really great maps, one would use cartographic software). A GIS is a spatial database. It allows you to store, organize, query, and analyze data - but not just any data - data in a GIS have specific spatial reference. Thus, the spatial location of data is linked to the attributes, and data can be analyzed based on both the spatial location AND the attributes of the data themselves. 
+
+GIS is very powerful software and is used in many sectors of society. The biggest users of GIS software are in marketing, urban/municipal planning, and the military. Conservation and ecology researchers are actually in a small minority of GIS users.
+
+This manual will introduce some of the commont things that conservation biologists will want to do with spatial data. These include:
+
+1. visualizing data in a map
+1. using sampling points to sample map data
+1. using polygons to sample map data
+
+As well, this manual will introduce some of the common issues and challenges when dealing with spatial data, including challenges with projections, map symbology, scale issues, and data organization. 
+
+#Type of GIS Data
+
+GIS data are divided into two categories, raster data and vector data. Another important component of GIS data is the metadata.
+
+##Raster Data
+
+Raster data represent the spatial data as a map made of pixels (sometimes called a "raster"). Each pixel has a unique value, in addition to a x, y coordinate. Raster data may be continuous, and represnet the actual value of the feature in the real world (e.g., soil pH) or raster data may be categorical, with numbers standing in for categorical data (e.g., 3 = decidous forest). In this case, the metadata should include a description of what the pixel data represent.
+
+##Vector Data
+
+Vector data represent the spatial data as either points, lines or polygons. Each feature in the dataset has georeferenced data (its locatoin along an x, y coordinate system) as well as attribute data. The attribute data can have many files. For example, a polygon feature representing protected areas might have fields for the name of the protected area, the year it was established, its size, the type of protected area (e.g., national, provincial or state park), and other data. Each line (or record) in the attribute data file is linked to a single feature in the data set. 
+
+There are no rules for what kind of data must be represented as either points, lines or polygons, however there are some standard (and farily obvious) practices. Features that are generally linear in the real world (even if they are not perfectly one-dimensional), such as roads, rivers, and railways, are usually represented by lines. Sample points and single entities (e.g., single trees) are reprsented as points. Features that have 2 dimensions, such as parcels of land, are represented as polygons. Sometimes a feature may be shown as a point at one spatial scale (e.g., at the scale of a continent, cities are shown as points) but as polygons at another spatial scale (e.g., if we zoom in on the Northeast Avalon, we may want to show the municipal boundaries of the various cities and towns as polygons).
+
+##Metadata
+
+Metadata is "data about the data". Metadata is a very important component of good data practice and is discusssed in chapter 10 of the MUN Biology R manual. If you are unfamilair with the concept of metadata, you can review it [here](https://ahurford.github.io/quant-guide-all-courses/data.html). With GIS data, the metadata are especially important, as they contain information about the coordinate reference system, or CRS (see PROJECTIONS chapter), as well as the attribute data, along with information about how and when the data were created. 
+
+<!--chapter:end:02-WhatIsGIS.Rmd-->
+
+#Reading in Vector Data {#vector}
+
+We will use the R package ```sf``` for handling vector data. You will have to download and install this package from the CRAN repository (review section [4.10](https://ahurford.github.io/quant-guide-all-courses/rintro.html#r-packages) of the MUN Biology R manual if need a reminder of how to do this).
+
+```{r}
+install.packages("sf", repos= getOption("repos"))
+library(sf)
+```
+
+To plot the data (i.e., make a map) we will also need the package ```ggplot2```, so make sure to load and install that as well.
+
+```{r}
+install.packages("ggplot2", repos= getOption("repos"))
+library(ggplot2)
+```
+
+```{r}
+setwd("C:/Users/ywiersma/Documents/BIOL4651/GISModule/ConservationGIS/HARV")
+```
+
+Downlaod the folder "HARV" to your working directory. If you do not remember how to check, and set your working directory, review section [4.2](https://ahurford.github.io/quant-guide-all-courses/rintro.html#working-directory). This folder contains data from the Harvard Research Forest. The vector data include a point file that represents sampling points, a line file that is the boundary of the resarch forest, and two polygon files that show the boundary of the research forest and the soil regions. 
+
+We read these files in in a similar way as you read in a file like a csv file, but instead of using ```read.csv``` we use ```st_read()```
+
+Read in the boundary shapefile (recognizable by the .shp extension) for the Harvard forest
+
+```HARV_boundary <- st_read("harv_boundary.shp")```
+
+Read in the the soil region shapefile for the Harvard forest
+
+```HARV_soils <- st_read("harv_soils.shp")```
+
+To create a map we will use the ```ggplot()``` function, with the ```geom_sf``` function.
+
+```{r}
+ggplot() +
+  geom_sf(data = HARV_boundary) + 
+  geom_sf(data = HARV_soils)
+```
+
+GIS maps are all about "layers" of data. The order in which data are displayed in ```ggplot``` is important. In the above code, we "layered" the ```HARV_soils``` polygon *over* the ```HARV_boundary``` polygon. Check what happens when we layer them in the opposite order: 
+
+```{r}
+ggplot() +
+  geom_sf(data = HARV_soils) + 
+  geom_sf(data = HARV_boundary)
+```
+
+Now the boundary file is over top the soils one and because it is a filled polygon, we can't see the soils layer. One way we can deal with this, is by adjusting the transparancy of the boundary layer with the ```alpha``` function. This adjusts the transparency from fully transparent (```alpha = 0```), to fully opaque (```alpha = 1```). 
+
+```{r}
+ggplot() +
+  geom_sf(data = HARV_soils) + 
+  geom_sf(data = HARV_boundary, alpha = 0.1)
+```
+
+We can also sympbolize data based on the attributes. Before we do that, let's explore the HARV_soils layer. If you type ```HARV_soils``` AT THE ```>``` prompt, you will see the metadata. You will see that in additon to some descriptions of the geographic reference system (for more on that, see the PROJECTIONS chapter), you will see some attributes, including different kinds of soil classification and drainage types. If we want to display the soil polygons by their SIMMONS_SO field, we would use the ```aes``` (for aeshtetics) function.
+
+```{r}
+ggplot() +
+  geom_sf(data = HARV_soils, mapping = aes(fill = SIMMONS_SO)) + 
+  geom_sf(data = HARV_boundary, alpha = 0.1)
+```
+
+The default colour scheme has been applied. You can change this using different built in colour maps. Below is the code to use the viridis colour map.
+
+```{r}
+ggplot() +
+  geom_sf(data = HARV_soils, mapping = aes(fill = SIMMONS_SO)) + 
+  geom_sf(data = HARV_boundary, alpha = 0.1) +
+  scale_file_viridis_d()
+```
+
+To see other aethetics that can be modified, run ```vignette("ggplot2-specs")```
+
+
+<!--chapter:end:03-Vectors.Rmd-->
+
+#Reading in Raster Data {#raster}
+
+We will use the R package ```stars``` for handling vector data. You will have to download and install this package from the CRAN repository (review section [4.10](https://ahurford.github.io/quant-guide-all-courses/rintro.html#r-packages) of the MUN Biology R manual if need a reminder of how to do this).
+
+```{r}
+install.packages("stars")
+library(stars) 
+```
+
+To plot the data (i.e., make a map) we will also need the package ```ggplot2```, so make sure to load and install that as well, if you haven't yet already.
+
+```{r}
+install.packages("ggplot2")
+library(ggplot2)
+```
+
+If you didn't already set the working directory to where you ahve downloaded the HARV folder, do so now. This folder contains 4 .tif files. You may be familair with .tif files as digital photographs. These are a special kind of .tif called a geotiff. Like a digital photograph, it has pixels, but it also has georeferenced data. 
+
+```{r}
+setwd("C:/Users/ywiersma/Documents/BIOL4651/GISModule/ConservationGIS/HARV")
+```
+
+We will read in the raster that represents the digital terrain model (dtm for short) - in this raster, each pixel gives the elevation above sea level of that point. We use the ```read_stars``` function.
+
+```{r}
+HARV_dtm <- read_stars("HARV_dtmFull.tif")
+```
+
+To plot it, we use ```geom_stars()``` in ```ggplot()```. We'll use the "viridis" colour palette. Note that we specified _c (for continous) here, because the raster values are continuous data, whereas when we used the colour palette for the soils polygon data in the VECTORS chapter, we used _d (for discrete), because those data were discrete categories.
+
+```{r}
+ggplot() +
+  geom_stars(data = HARV_dtm) +
+  scale_fill_viridis_c()
+```
+
+**NOTE**: If it takes too long to draw the map, try loading in a subset of the dtm (the "HARV_DTMCrop.tif" file) instead. Raster files can take a long time to load and depending on your computer's available CPU, you may wish to use a smaller raster layer)
+
+What if we want to show the boundaries of the Harvard forest on top of this raster layer? Add it in ggplot like this:
+
+```{r}
+ggplot +
+  geom_stars(data = HARV_dtm) +
+  geom_sf(data = HARV_boundary, alpha = 0.1) +
+  scale_fill_viridis_c()
+```
+
+
+Now download the SJER folder, and change your working directory, to that folder. This is similar data to that from the Harvard forest, but from the San Joaquin Experimental Range. On your own, read in the following layers and try to plot them.
+1. sjer_plots (these are point files that represent the locaton of the sample plots)
+1. SJER_dtmFULL.tif (a raster of the digital terrain model showing elevations)
+
+```{r}
+setwd("C:/Users/ywiersma/Documents/BIOL4651/GIS_R/neon-geospatial-data")
+```
+
+```{r}
+SJER_plots <- st_read("sjer_plots.shp")
+SJER_dtm <- read_stars("SJER_dtmFULL.tif")
+
+ggplot() +
+  geom_stars(data = SJER_dtm) +
+  geom_st(data = SJER_plots)
+```
+
+You will get a blank map... something does not look right. Congratulations - you've discoverd the most common (and frustrating) issue with spatial data - conflicting projections. To learn more, go the the chapter on PROJECTIONS. 
+
+  
+
+<!--chapter:end:04-Rasters.Rmd-->
+
+#PROJECTIONS {#projections}
+
+At the end of the VECTORS chapter, we tried to map the plots layer for the San Joaquin Experimental Range over the digital terrain model (dtm). The two layers didn't display properly, so something went wrong. To see what happened, we need to have a look at the co-ordinate reference system (crs) for the two layers. Use the ```st_crs``` command to see what this is for each layer.
+
+```{r}
+st_crs(SJER_plots)
+st_crs(SJER_dtm)
+```
+
+Scroll through the results and compare the last set of numbers at the end of the file in the ID[] line. You should note that the SJER_plots file as an ID of 4325 and that the SJER_dtm has an ID of 32611. This indicates that the two layers have different coordinate systems. You can verify this by plotting each separately and chekcing the coordinate system labels on the map edges. The labels on the dtm are in UTM units, while the labels on the plots are in latitude and longitude. We need to convert the coordinate reference system (crs) of one of the layers to match the other. We use the ```st_transform``` function to create a new plots layer which has a projection system that matches the dtm layer.
+
+```{r}
+SJER_plots_utm <- st_transform(SJER_plots, st_crs(SJER_dtm))
+```
+
+Now you should be able to plot the two layers together
+
+```{r}
+ggplot() +
+  geom_stars(data = SJER_dtm) +
+  geom_sf(data = SJER_plots_utm)
+```
+
+Now that you have the two data sets aligned, you can extract the elevation data for each point. Go to the next chapter (EXTRACTING DATA) to learn how. 
+
+<!--chapter:end:05-Projections.Rmd-->
+
+#RASTER ALGEBRA {#rasterAlgebra}
+
+It is possible to analyse and combien two different rasters. The second raster layer in the SJER foler is a digital surface model (dsm) which is a data set taken using Lidar data that measures the height of the objects (above sea level) of objects on the earth. Let's load that layer.
+
+```{r}
+SJER_dsm <- read_stars("SJER_dsmFull.tif")
+```
+
+By subtracting the dtm (elevation of the ground above sea level) from the dsm (elevation of the objects on the ground above sea level) we can create a new raster that represents the height of those objects above the ground. Since this layer is in a forest, we can infer that this new layer is the canopy height. 
+
+```{r}
+SJER_canopy = SJER_dsm - SJER_dtm
+```
+
+Raster algebra can use any algebraic functions - for example if we wanted to convert the units of the canopy layer from metres to centimetres, we could simply multiply the SJER_canopy layer by 10. 
+
+
+
+<!--chapter:end:06-RasterAlgebra.Rmd-->
+
+#Extracting Data from a Raster {#extractingData}
+
+A common thing that ecologists and conservation biologists want to get data for their sample sites from different GIS layers and then use these data in different models or statistical tests.
+
+#Sampling data from a raster using points
+
+####NOTE TO ME: Revise this to match data carpentry one with the canopy layer from chapter 6### ##
+
+We use the ```aggregate``` function to get data from a raster
+
+```{r}
+plot_elevations <- aggregate(SJER_dtm, SJER_plots_utm, mean, as_points = FALSE)
+plot_elevations$SJER_dtmFULL.tif
+```
+
+To link this data into the attribute data we will use the ```mutate``` function in the package ```dplyr```. We have a lab in BIOL 1002 that teaches some of the basics of the dply package. If you're not familar with that package, just use the code below.
+
+```{r}
+mutate(SJER_plots_utm, elevation = plot_elevations$SJER_dtmFULL.tif)
+```
+
+If you examine the SJER_plots_utm data, you will see that it now has the elevation data in the attribute data. We can now use this data to do an analysis of the relationship between canopy height and elevation. 
+
+
+#Sampling data from a raster using polygons
+
+At other times, resarchers may want to sample data from a raster using a polygon. For example, we might want to know what the maximum elevation within 
+
+<!--chapter:end:07-ExtractingData.Rmd-->
+

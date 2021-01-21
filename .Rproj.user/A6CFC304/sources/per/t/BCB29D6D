@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "1212148801",
+    "hash" : "644543416",
     "id" : "BCB29D6D",
-    "lastKnownWriteTime" : 1611175946,
-    "last_content_update" : 1611176242151,
-    "path" : "~/BIOL4651/GIS_R_manual/ConsBiol_SpatialAnalysis/03-Vectors.Rmd",
+    "lastKnownWriteTime" : 1611240535,
+    "last_content_update" : 1611240535611,
+    "path" : "~/BIOL4651/GIS_R_manual/ConsBiol_SpatialAnalysis/ConsBiol_SpatialAnalysis/03-Vectors.Rmd",
     "project_path" : "03-Vectors.Rmd",
     "properties" : {
-        "cursorPosition" : "16,0",
-        "scrollLine" : "3"
+        "cursorPosition" : "2,28",
+        "scrollLine" : "0"
     },
     "read_only" : false,
     "read_only_alternatives" : [

@@ -7,11 +7,13 @@
     "folds" : "",
     "hash" : "3200106230",
     "id" : "C60D540A",
-    "lastKnownWriteTime" : 1611153871,
-    "last_content_update" : 1611153871,
-    "path" : "~/BIOL4651/GIS_R_manual/ConsBiol_SpatialAnalysis/01-introduction.Rmd",
+    "lastKnownWriteTime" : 1611240203,
+    "last_content_update" : 1611240203,
+    "path" : "~/BIOL4651/GIS_R_manual/ConsBiol_SpatialAnalysis/ConsBiol_SpatialAnalysis/01-introduction.Rmd",
     "project_path" : "01-introduction.Rmd",
     "properties" : {
+        "cursorPosition" : "0,0",
+        "scrollLine" : "0"
     },
     "read_only" : false,
     "read_only_alternatives" : [
