@@ -1,0 +1,26 @@
+{
+    "id": "31110CC4",
+    "path": "~/BIOL4651/GIS_R_manual/ConsBiol_SpatialAnalysis/ConsBiol_SpatialAnalysis/ConsBiol_SpatialAnalysis/06-RasterAlgebra.Rmd",
+    "project_path": "06-RasterAlgebra.Rmd",
+    "type": "r_markdown",
+    "hash": "3949592811",
+    "contents": "",
+    "dirty": false,
+    "created": 1611258776224.0,
+    "source_on_save": false,
+    "relative_order": 4,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "22,95",
+        "scrollLine": "10"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1611262577,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1611262577887,
+    "read_only": false,
+    "read_only_alternatives": []
+}

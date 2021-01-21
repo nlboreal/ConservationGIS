@@ -1,0 +1,26 @@
+{
+    "id": "63E50D56",
+    "path": "~/BIOL4651/GIS_R_manual/ConsBiol_SpatialAnalysis/ConsBiol_SpatialAnalysis/ConsBiol_SpatialAnalysis/05-Projections.Rmd",
+    "project_path": "05-Projections.Rmd",
+    "type": "r_markdown",
+    "hash": "11116416",
+    "contents": "",
+    "dirty": false,
+    "created": 1611258664895.0,
+    "source_on_save": false,
+    "relative_order": 3,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "23,255",
+        "scrollLine": "10"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1611262579,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1611262579931,
+    "read_only": false,
+    "read_only_alternatives": []
+}

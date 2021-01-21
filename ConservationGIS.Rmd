@@ -4,10 +4,11 @@ author: "Dr. Yolanda Wiersma, Memorial University"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
-bibliography: [book.bib, packages.bib]
+bibliography: [references.bib]
 biblio-style: apalike
-link-citations: yes
-description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
+link-citations: false
+git-hub-repo: nlboreal/ConsBiol_SpatialAnalysis
+description: "Quantitative R skills for GIS and Spatial Analysis"
 ---
 
 # Introduction {#intro}
@@ -86,19 +87,19 @@ Metadata is "data about the data". Metadata is a very important component of goo
 We will use the R package ```sf``` for handling vector data. You will have to download and install this package from the CRAN repository (review section [4.10](https://ahurford.github.io/quant-guide-all-courses/rintro.html#r-packages) of the MUN Biology R manual if need a reminder of how to do this).
 
 ```{r}
-install.packages("sf", repos= getOption("repos"))
+install.packages("sf")
 library(sf)
 ```
 
 To plot the data (i.e., make a map) we will also need the package ```ggplot2```, so make sure to load and install that as well.
 
 ```{r}
-install.packages("ggplot2", repos= getOption("repos"))
+install.packages("ggplot2")
 library(ggplot2)
 ```
 
 ```{r}
-setwd("C:/Users/ywiersma/Documents/BIOL4651/GISModule/ConservationGIS/HARV")
+setwd("C:/Users/ywiersma/Documents/BIOL4651/GIS_R_manual/ConsBiol_SpatialAnalysis/HARV")
 ```
 
 Downlaod the folder "HARV" to your working directory. If you do not remember how to check, and set your working directory, review section [4.2](https://ahurford.github.io/quant-guide-all-courses/rintro.html#working-directory). This folder contains data from the Harvard Research Forest. The vector data include a point file that represents sampling points, a line file that is the boundary of the resarch forest, and two polygon files that show the boundary of the research forest and the soil regions. 
@@ -107,11 +108,15 @@ We read these files in in a similar way as you read in a file like a csv file, b
 
 Read in the boundary shapefile (recognizable by the .shp extension) for the Harvard forest
 
-```HARV_boundary <- st_read("harv_boundary.shp")```
+```{r}
+HARV_boundary <- st_read("harv_boundary.shp")
+```
 
 Read in the the soil region shapefile for the Harvard forest
 
-```HARV_soils <- st_read("harv_soils.shp")```
+```{r}
+HARV_soils <- st_read("harv_soils.shp")
+```
 
 To create a map we will use the ```ggplot()``` function, with the ```geom_sf``` function.
 
@@ -129,7 +134,7 @@ ggplot() +
   geom_sf(data = HARV_boundary)
 ```
 
-Now the boundary file is over top the soils one and because it is a filled polygon, we can't see the soils layer. One way we can deal with this, is by adjusting the transparancy of the boundary layer with the ```alpha``` function. This adjusts the transparency from fully transparent (```alpha = 0```), to fully opaque (```alpha = 1```). 
+Now the boundary file is over top the soils one and because it is a filled polygon, we can't see the soils layer. One way we can deal with this, is by adjusting the transparency of the boundary layer with the ```alpha``` function. This adjusts the transparency from fully transparent (```alpha = 0```), to fully opaque (```alpha = 1```). 
 
 ```{r}
 ggplot() +
@@ -137,7 +142,7 @@ ggplot() +
   geom_sf(data = HARV_boundary, alpha = 0.1)
 ```
 
-We can also sympbolize data based on the attributes. Before we do that, let's explore the HARV_soils layer. If you type ```HARV_soils``` AT THE ```>``` prompt, you will see the metadata. You will see that in additon to some descriptions of the geographic reference system (for more on that, see the PROJECTIONS chapter), you will see some attributes, including different kinds of soil classification and drainage types. If we want to display the soil polygons by their SIMMONS_SO field, we would use the ```aes``` (for aeshtetics) function.
+We can also symbolize data based on the attributes. Before we do that, let's explore the HARV_soils layer. If you type ```HARV_soils``` AT THE ```>``` prompt, you will see the metadata. You will see that in addition to some descriptions of the geographic reference system (for more on that, see the PROJECTIONS chapter), you will see some attributes, including different kinds of soil classification and drainage types. If we want to display the soil polygons by their SIMMONS_SO field, we would use the ```aes``` (for aesthetics) function.
 
 ```{r}
 ggplot() +
@@ -151,17 +156,17 @@ The default colour scheme has been applied. You can change this using different 
 ggplot() +
   geom_sf(data = HARV_soils, mapping = aes(fill = SIMMONS_SO)) + 
   geom_sf(data = HARV_boundary, alpha = 0.1) +
-  scale_file_viridis_d()
+  scale_fill_viridis_d()
 ```
 
-To see other aethetics that can be modified, run ```vignette("ggplot2-specs")```
+To see other aesthetics that can be modified, run ```vignette("ggplot2-specs")```
 
 
 <!--chapter:end:03-Vectors.Rmd-->
 
 #Reading in Raster Data {#raster}
 
-We will use the R package ```stars``` for handling vector data. You will have to download and install this package from the CRAN repository (review section [4.10](https://ahurford.github.io/quant-guide-all-courses/rintro.html#r-packages) of the MUN Biology R manual if need a reminder of how to do this).
+We will use the R package ```stars``` for handling raster data. You will have to download and install this package from the CRAN repository (review section [4.10](https://ahurford.github.io/quant-guide-all-courses/rintro.html#r-packages) of the MUN Biology R manual if need a reminder of how to do this).
 
 ```{r}
 install.packages("stars")
@@ -175,10 +180,10 @@ install.packages("ggplot2")
 library(ggplot2)
 ```
 
-If you didn't already set the working directory to where you ahve downloaded the HARV folder, do so now. This folder contains 4 .tif files. You may be familair with .tif files as digital photographs. These are a special kind of .tif called a geotiff. Like a digital photograph, it has pixels, but it also has georeferenced data. 
+If you didn't already set the working directory to where you have downloaded the HARV folder, do so now. This folder contains 4 .tif files. You may be familiar with .tif files as digital photographs. These are a special kind of .tif called a geotiff. Like a digital photograph, it has pixels, but it also has georeferenced data. 
 
 ```{r}
-setwd("C:/Users/ywiersma/Documents/BIOL4651/GISModule/ConservationGIS/HARV")
+setwd("C:/Users/ywiersma/Documents/BIOL4651/GIS_R_manual/ConsBiol_SpatialAnalysis/HARV")
 ```
 
 We will read in the raster that represents the digital terrain model (dtm for short) - in this raster, each pixel gives the elevation above sea level of that point. We use the ```read_stars``` function.
@@ -187,7 +192,7 @@ We will read in the raster that represents the digital terrain model (dtm for sh
 HARV_dtm <- read_stars("HARV_dtmFull.tif")
 ```
 
-To plot it, we use ```geom_stars()``` in ```ggplot()```. We'll use the "viridis" colour palette. Note that we specified _c (for continous) here, because the raster values are continuous data, whereas when we used the colour palette for the soils polygon data in the VECTORS chapter, we used _d (for discrete), because those data were discrete categories.
+To plot it, we use ```geom_stars()``` in ```ggplot()```. We'll use the "viridis" colour palette. Note that we specified _c (for continous) here, because the raster values are continuous data, whereas when we used the colour palette for the soils polygon data in the \@ref(vectors) chapter, we used _d (for discrete), because those data were discrete categories.
 
 ```{r}
 ggplot() +
@@ -200,19 +205,19 @@ ggplot() +
 What if we want to show the boundaries of the Harvard forest on top of this raster layer? Add it in ggplot like this:
 
 ```{r}
-ggplot +
+ggplot() +
   geom_stars(data = HARV_dtm) +
   geom_sf(data = HARV_boundary, alpha = 0.1) +
   scale_fill_viridis_c()
 ```
 
 
-Now download the SJER folder, and change your working directory, to that folder. This is similar data to that from the Harvard forest, but from the San Joaquin Experimental Range. On your own, read in the following layers and try to plot them.
-1. sjer_plots (these are point files that represent the locaton of the sample plots)
+Let's try making another map that combines raster and vector data. Download the SJER folder, and change your working directory to that folder. This is similar data to that from the Harvard forest, but from the San Joaquin Experimental Range. On your own, read in the following layers and try to plot them.
+1. sjer_plots (these are point files that represent the location of the sample plots)
 1. SJER_dtmFULL.tif (a raster of the digital terrain model showing elevations)
 
 ```{r}
-setwd("C:/Users/ywiersma/Documents/BIOL4651/GIS_R/neon-geospatial-data")
+setwd("C:/Users/ywiersma/Documents/BIOL4651/GIS_R_manual/ConsBiol_SpatialAnalysis/SJER")
 ```
 
 ```{r}
@@ -221,10 +226,10 @@ SJER_dtm <- read_stars("SJER_dtmFULL.tif")
 
 ggplot() +
   geom_stars(data = SJER_dtm) +
-  geom_st(data = SJER_plots)
+  geom_sf(data = SJER_plots)
 ```
 
-You will get a blank map... something does not look right. Congratulations - you've discoverd the most common (and frustrating) issue with spatial data - conflicting projections. To learn more, go the the chapter on PROJECTIONS. 
+You will get a map that does not quite look right. Congratulations - you've discovered the most common (and frustrating) issue with spatial data - conflicting projections. To learn more, go the the chapter on projections \@ref(projections). 
 
   
 
@@ -232,7 +237,7 @@ You will get a blank map... something does not look right. Congratulations - you
 
 #PROJECTIONS {#projections}
 
-At the end of the VECTORS chapter, we tried to map the plots layer for the San Joaquin Experimental Range over the digital terrain model (dtm). The two layers didn't display properly, so something went wrong. To see what happened, we need to have a look at the co-ordinate reference system (crs) for the two layers. Use the ```st_crs``` command to see what this is for each layer.
+At the end of the vectors \@ref(vectors) chapter, we tried to map the plots layer for the San Joaquin Experimental Range over the digital terrain model (dtm). The two layers didn't display properly, so something went wrong. To see what happened, we need to have a look at the co-ordinate reference system (crs) for the two layers. Use the ```st_crs``` command to see what this is for each layer.
 
 ```{r}
 st_crs(SJER_plots)
@@ -253,27 +258,33 @@ ggplot() +
   geom_sf(data = SJER_plots_utm)
 ```
 
-Now that you have the two data sets aligned, you can extract the elevation data for each point. Go to the next chapter (EXTRACTING DATA) to learn how. 
+Now that you have the two data sets aligned, you can extract the elevation data for each point, which is explained in the chapter on extracting data \@ref(extractingData). Before you do that, complete the exercises in the next chapter \@ref(rasterAlgebra).  
 
 <!--chapter:end:05-Projections.Rmd-->
 
 #RASTER ALGEBRA {#rasterAlgebra}
 
-It is possible to analyse and combien two different rasters. The second raster layer in the SJER foler is a digital surface model (dsm) which is a data set taken using Lidar data that measures the height of the objects (above sea level) of objects on the earth. Let's load that layer.
+It is possible to analyse and combine two different rasters. The second raster layer in the SJER folder is a digital surface model (dsm) which is a data set taken using Lidar data that measures the height of the objects (above sea level) of objects on the earth. Let's load that layer.
 
 ```{r}
-SJER_dsm <- read_stars("SJER_dsmFull.tif")
+SJER_dsm <- read_stars("SJER_dsmCROP.tif")
 ```
 
-By subtracting the dtm (elevation of the ground above sea level) from the dsm (elevation of the objects on the ground above sea level) we can create a new raster that represents the height of those objects above the ground. Since this layer is in a forest, we can infer that this new layer is the canopy height. 
+By subtracting the dtm (elevation of the ground above sea level) from the dsm (elevation of the objects on the ground above sea level) we can create a new raster that represents the height of those objects above the ground. Since this layer is in a forest, we can infer that this new layer is the canopy height. However, the dsm layer covers a smaller extent that the dtm, so we'll also read in the cropped .tif file for the dtm
 
 ```{r}
-SJER_canopy = SJER_dsm - SJER_dtm
+SJER_dtm_cropped <- read_stars("SJER_dtmCROP.tif")
 ```
 
-Raster algebra can use any algebraic functions - for example if we wanted to convert the units of the canopy layer from metres to centimetres, we could simply multiply the SJER_canopy layer by 10. 
+Now we can do the raster algebra: 
 
+```{r}
+SJER_canopy = SJER_dsm - SJER_dtm_cropped
+```
 
+Raster algebra can use any algebraic functions and involve one or more raster layers - for example if we wanted to convert the units of the canopy layer from metres to centimetres, we could simply multiply the SJER_canopy layer by 10. Or if you had a raster of canopy height in 2000 and canopy height in 2020, you could subtract one from the other to find out how much the tree height changed over 20 years in different parts of the landscape. 
+
+Now we can extract the canopy height data from our sample locations - see \@ref(extractingData). 
 
 <!--chapter:end:06-RasterAlgebra.Rmd-->
 
@@ -283,27 +294,82 @@ A common thing that ecologists and conservation biologists want to get data for 
 
 #Sampling data from a raster using points
 
-####NOTE TO ME: Revise this to match data carpentry one with the canopy layer from chapter 6### ##
-
-We use the ```aggregate``` function to get data from a raster
+We use the ```aggregate``` function to get data from the canopy raster
 
 ```{r}
-plot_elevations <- aggregate(SJER_dtm, SJER_plots_utm, mean, as_points = FALSE)
-plot_elevations$SJER_dtmFULL.tif
+plot_canopy_height <- aggregate(SJER_canopy, SJER_plots_utm, mean, as_points = FALSE)
+plot_canopy_height$SJER_dsmCrop.tif
 ```
 
-To link this data into the attribute data we will use the ```mutate``` function in the package ```dplyr```. We have a lab in BIOL 1002 that teaches some of the basics of the dply package. If you're not familar with that package, just use the code below.
+To link this data into the attribute data we will use the ```mutate``` function in the package ```dplyr```. We have a lab in BIOL 1002 that teaches some of the basics of the dplyr package. If you're not familiar with that package, just use the code below.
 
 ```{r}
-mutate(SJER_plots_utm, elevation = plot_elevations$SJER_dtmFULL.tif)
+mutate(SJER_plots_utm, canopyHeight = plot_canopy_height$SJER_dsmCrop.tif)
 ```
 
-If you examine the SJER_plots_utm data, you will see that it now has the elevation data in the attribute data. We can now use this data to do an analysis of the relationship between canopy height and elevation. 
+If you examine the SJER_plots_utm data, you will see that it now has the canopy height data in the attribute data. You'll notice that there is also an attribute for ```plot_type```. We can make a map that symbolizes the sample points by the plot type like this:
+
+```{r}
+ggplot() +
+  geom_stars(data = SJER_canopy) +
+  geom_sf(data = SJER_plots_utm, mapping = aes(color = plot_type))
+```
+
+You could now take this data and test whether canopy height is significantly different at the tower sampling points or at the distributed sampling points. We won't do that just now; we'll do some statistics on these data in a different module. 
 
 
 #Sampling data from a raster using polygons
 
-At other times, resarchers may want to sample data from a raster using a polygon. For example, we might want to know what the maximum elevation within 
+At other times, researchers may want to sample data from a raster using a polygon. For example, we might want to know what the maximum elevation within the boundaries of a protected area is. 
+
+To do these exercises, we're going to change back to Harvard forest data set. Set your working directory to the HARV folder.
+
+```{r}
+setwd("C:/Users/ywiersma/Documents/BIOL4651/GIS_R_manual/ConsBiol_SpatialAnalysis/HARV")
+```
+
+We're going to find out what the maximum elevation is in each of the soil drainage polygons.
+
+First, check that the two layers have the same co-ordinate reference system:
+
+```{r}
+st_crs(HARV_dtm)
+st_crs(HARV_soils)
+```
+
+The ID code at the end of each file is identical (```32618```), so you can overlay these layers and extract the data. If you are not convinced, try mapping them together.
+
+Then we use the same ```aggregate``` function as we did to extract the data from the raster to points. Note, that when you extract with a polygon, there are many pixels within the polygon. You can specify different values you want to extract from the pixels within the polygon, for example, maximum, minimum, mean. 
+
+```{r}
+drainage_max_elev <- aggregate(HARV_dtm, HARV_soils, max, as_points = FALSE)
+drainage_max_elev$HARv_dtmFull.tif
+```
+
+Here we'll use the ```mutate``` function and create a new shapefile
+
+```{r}
+elevation_by_drainage <- mutate(HARV_soils, elevation = drainage_max_elev$HARV_dtmFull.tif)
+```
+
+Now we can plot the soil drainage basins and colour code them by their maximum height.
+
+```{r}
+ggplot() +
+  geom_sf(data = elevation_by_drainage, mapping = aes(fill = elevation)) +
+  scale_fill_viridis_c()
+```
+
+If you want to change the map display so the coordinates on the map boundary are in UTM, you can do it like so:
+
+```{r}
+ggplot() +
+  geom_sf(data = elevation_by_drainage, mapping = aes(fill = elevation)) +
+  coord_sf(datum = st_crs(HARV_dtm)) + 
+  scale_fill_viridis_c()
+```
+
+What if you have sampled points in the field with a handheld gps and only have a csv file with x and y coordinates? How can you get the data? Go to the next chapter \@ref(PointsData) to find out! 
 
 <!--chapter:end:07-ExtractingData.Rmd-->
 
