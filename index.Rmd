@@ -5,7 +5,6 @@ date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook #bookdown::html_document2
 documentclass: book
-bibliography: [references.bib]
 biblio-style: apalike
 link-citations: false
 git-hub-repo: nlboreal/ConsBiol_SpatialAnalysis
