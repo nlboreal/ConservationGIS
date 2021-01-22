@@ -3,14 +3,14 @@
 We will use the R package ```sf``` for handling vector data. You will have to download and install this package from the CRAN repository (review section [4.10](https://ahurford.github.io/quant-guide-all-courses/rintro.html#r-packages) of the MUN Biology R manual if need a reminder of how to do this).
 
 ```{r}
-install.packages("sf")
+#install.packages("sf")
 library(sf)
 ```
 
 To plot the data (i.e., make a map) we will also need the package ```ggplot2```, so make sure to load and install that as well.
 
 ```{r}
-install.packages("ggplot2")
+#install.packages("ggplot2")
 library(ggplot2)
 ```
 

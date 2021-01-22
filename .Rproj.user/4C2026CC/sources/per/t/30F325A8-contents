@@ -1,0 +1,7 @@
+# How to use this manual {#howto}
+
+This manual has been developed specifically for Biology students. We are increasing the focus on quantitative skills in our Biology curriculum, in response to changing demands and emphasis within the field of biology itself. In 2020, we introduce first year biology (BIOL 1001/1002) students to R software and basic statistical concepts. Other courses (BIOL 2600 - Principles of Ecology, BIOL 3295 - Population and Evolutionary Ecology and BIOL 4607 - Models in Biology) all incorporate R tools in their labs. This course will teach you some R tools relevant to spatial analysis for conservation biology. 
+
+If you are not familiar with R, it is recommended that you read through the MUN Biology R Manual, which is available online [here](https://ahurford.github.io/quant-guide-all-courses/), paying special attention to chapters 2-7.
+
+While working through the manual, we recommend that you set up your computer screen so that you can see your browser and the R Studio software at the same time. You can experiment with re-sizing windows and if you have two monitors, that will be really handy. Or, if you have access to a laptop and a tablet, we recommend using RStudio on your laptop and opening the manual in the browser on your tablet so that you can move between the two easily. 
