@@ -1,9 +1,9 @@
 {
     "id": "F93CEC33",
-    "path": "~/BIOL4651/GIS_R_manual/ConsBiol_SpatialAnalysis/ConsBiol_SpatialAnalysis/05-Rasters.Rmd",
+    "path": "~/BIOL4651/GIS_R_manual/ConsBiol_SpatialAnalysis/05-Rasters.Rmd",
     "project_path": "05-Rasters.Rmd",
     "type": "r_markdown",
-    "hash": "1400818555",
+    "hash": "4188456915",
     "contents": "",
     "dirty": false,
     "created": 1611258136907.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "65,240",
+        "cursorPosition": "4,21",
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1611330014,
+    "lastKnownWriteTime": 1611345582,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1611330014,
+    "last_content_update": 1611345582469,
     "read_only": false,
     "read_only_alternatives": []
 }

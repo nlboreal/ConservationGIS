@@ -1,8 +1,8 @@
-#Extracting Data from a Raster {#extractingData}
+# Extracting Data from a Raster {#extractingData}
 
 A common thing that ecologists and conservation biologists want to get data for their sample sites from different GIS layers and then use these data in different models or statistical tests.
 
-#Sampling data from a raster using points
+## Sampling data from a raster using points
 
 We use the ```aggregate``` function to get data from the canopy raster
 
@@ -12,6 +12,10 @@ plot_canopy_height$SJER_dsmCrop.tif
 ```
 
 To link this data into the attribute data we will use the ```mutate``` function in the package ```dplyr```. We have a lab in BIOL 1002 that teaches some of the basics of the dplyr package. If you're not familiar with that package, just use the code below.
+
+```{r, message = FALSE}
+library(dplyr)
+```
 
 ```{r}
 mutate(SJER_plots_utm, canopyHeight = plot_canopy_height$SJER_dsmCrop.tif)
@@ -28,14 +32,14 @@ ggplot() +
 You could now take this data and test whether canopy height is significantly different at the tower sampling points or at the distributed sampling points. We won't do that just now; we'll do some statistics on these data in a different module. 
 
 
-#Sampling data from a raster using polygons
+## Sampling data from a raster using polygons
 
 At other times, researchers may want to sample data from a raster using a polygon. For example, we might want to know what the maximum elevation within the boundaries of a protected area is. 
 
 To do these exercises, we're going to change back to Harvard forest data set. Set your working directory to the HARV folder.
 
-```{r}
-setwd("C:/Users/ywiersma/Documents/BIOL4651/GIS_R_manual/ConsBiol_SpatialAnalysis/HARV")
+```{r, echo = FALSE}
+#setwd("C:/Users/ywiersma/Documents/BIOL4651/GIS_R_manual/ConsBiol_SpatialAnalysis/HARV")
 ```
 
 We're going to find out what the maximum elevation is in each of the soil drainage polygons.
@@ -79,4 +83,4 @@ ggplot() +
   scale_fill_viridis_c()
 ```
 
-What if you have sampled points in the field with a handheld gps and only have a csv file with x and y coordinates? How can you get the data? Go to the next chapter \@ref(PointsData) to find out! 
+What if you have sampled points in the field with a handheld gps and only have a csv file with x and y coordinates? How can you get the data? Go to chapter \@ref(PointsData) to find out! 

@@ -1,32 +1,30 @@
-#Reading in Raster Data {#raster}
+# Reading in Raster Data {#raster}
 
 We will use the R package ```stars``` for handling raster data. You will have to download and install this package from the CRAN repository (review section [4.10](https://ahurford.github.io/quant-guide-all-courses/rintro.html#r-packages) of the MUN Biology R manual if need a reminder of how to do this).
 
-```{r}
-install.packages("stars")
+```{r, message= FALSE}
 library(stars) 
 ```
 
 To plot the data (i.e., make a map) we will also need the package ```ggplot2```, so make sure to load and install that as well, if you haven't yet already.
 
 ```{r}
-install.packages("ggplot2")
 library(ggplot2)
 ```
 
 If you didn't already set the working directory to where you have downloaded the HARV folder, do so now. This folder contains 4 .tif files. You may be familiar with .tif files as digital photographs. These are a special kind of .tif called a geotiff. Like a digital photograph, it has pixels, but it also has georeferenced data. 
 
-```{r}
-setwd("C:/Users/ywiersma/Documents/BIOL4651/GIS_R_manual/ConsBiol_SpatialAnalysis/HARV")
+```{r, echo = FALSE}
+#setwd("C:/Users/ywiersma/Documents/BIOL4651/GIS_R_manual/ConsBiol_SpatialAnalysis/HARV")
 ```
 
 We will read in the raster that represents the digital terrain model (dtm for short) - in this raster, each pixel gives the elevation above sea level of that point. We use the ```read_stars``` function.
 
 ```{r}
-HARV_dtm <- read_stars("HARV_dtmFull.tif")
+HARV_dtm <- read_stars("HARV/HARV_dtmFull.tif")
 ```
 
-To plot it, we use ```geom_stars()``` in ```ggplot()```. We'll use the "viridis" colour palette. Note that we specified _c (for continous) here, because the raster values are continuous data, whereas when we used the colour palette for the soils polygon data in the \@ref(vectors) chapter, we used _d (for discrete), because those data were discrete categories.
+To plot it, we use ```geom_stars()``` in ```ggplot()```. We'll use the ```viridis``` colour palette. Note that we specified _c (for continous) here, because the raster values are continuous data, whereas when we used the colour palette for the soils polygon data in the \@ref(vector) chapter, we used _d (for discrete), because those data were discrete categories.
 
 ```{r}
 ggplot() +
@@ -50,19 +48,19 @@ Let's try making another map that combines raster and vector data. Download the 
 1. sjer_plots (these are point files that represent the location of the sample plots)
 1. SJER_dtmFULL.tif (a raster of the digital terrain model showing elevations)
 
-```{r}
-setwd("C:/Users/ywiersma/Documents/BIOL4651/GIS_R_manual/ConsBiol_SpatialAnalysis/SJER")
+```{r, echo = FALSE}
+#setwd("C:/Users/ywiersma/Documents/BIOL4651/GIS_R_manual/ConsBiol_SpatialAnalysis/SJER")
 ```
 
 ```{r}
-SJER_plots <- st_read("sjer_plots.shp")
-SJER_dtm <- read_stars("SJER_dtmFULL.tif")
+SJER_plots <- st_read("SJER/sjer_plots.shp")
+SJER_dtm <- read_stars("SJER/SJER_dtmFULL.tif")
 
 ggplot() +
   geom_stars(data = SJER_dtm) +
   geom_sf(data = SJER_plots)
 ```
 
-You will get a map that does not quite look right. Congratulations - you've discovered the most common (and frustrating) issue with spatial data - conflicting projections. To learn more, go the the chapter on projections \@ref(projections). 
+You will get a map that does not quite look right. Congratulations - you've discovered the most common (and frustrating) issue with spatial data - conflicting projections. To learn more, go the the chapter on projections; chapter \@ref(projections). 
 
   

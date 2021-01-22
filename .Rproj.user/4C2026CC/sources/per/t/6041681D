@@ -1,9 +1,9 @@
 {
     "id": "6041681D",
-    "path": "~/BIOL4651/GIS_R_manual/ConsBiol_SpatialAnalysis/ConsBiol_SpatialAnalysis/index.Rmd",
+    "path": "~/BIOL4651/GIS_R_manual/ConsBiol_SpatialAnalysis/index.Rmd",
     "project_path": "index.Rmd",
     "type": "r_markdown",
-    "hash": "1064947231",
+    "hash": "862557584",
     "contents": "",
     "dirty": false,
     "created": 1611330090471.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "13,0",
-        "scrollLine": "7"
+        "cursorPosition": "9,21",
+        "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1611330272,
+    "lastKnownWriteTime": 1611346094,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1611330272340,
+    "last_content_update": 1611346094953,
     "read_only": false,
     "read_only_alternatives": []
 }

@@ -14,20 +14,20 @@ This manual will introduce some of the commont things that conservation biologis
 
 As well, this manual will introduce some of the common issues and challenges when dealing with spatial data, including challenges with projections, map symbology, scale issues, and data organization. 
 
-#Type of GIS Data
+## Types of GIS Data
 
 GIS data are divided into two categories, raster data and vector data. Another important component of GIS data is the metadata.
 
-##Raster Data
+## Raster Data
 
 Raster data represent the spatial data as a map made of pixels (sometimes called a "raster"). Each pixel has a unique value, in addition to a x, y coordinate. Raster data may be continuous, and represnet the actual value of the feature in the real world (e.g., soil pH) or raster data may be categorical, with numbers standing in for categorical data (e.g., 3 = decidous forest). In this case, the metadata should include a description of what the pixel data represent.
 
-##Vector Data
+## Vector Data
 
 Vector data represent the spatial data as either points, lines or polygons. Each feature in the dataset has georeferenced data (its locatoin along an x, y coordinate system) as well as attribute data. The attribute data can have many files. For example, a polygon feature representing protected areas might have fields for the name of the protected area, the year it was established, its size, the type of protected area (e.g., national, provincial or state park), and other data. Each line (or record) in the attribute data file is linked to a single feature in the data set. 
 
 There are no rules for what kind of data must be represented as either points, lines or polygons, however there are some standard (and farily obvious) practices. Features that are generally linear in the real world (even if they are not perfectly one-dimensional), such as roads, rivers, and railways, are usually represented by lines. Sample points and single entities (e.g., single trees) are reprsented as points. Features that have 2 dimensions, such as parcels of land, are represented as polygons. Sometimes a feature may be shown as a point at one spatial scale (e.g., at the scale of a continent, cities are shown as points) but as polygons at another spatial scale (e.g., if we zoom in on the Northeast Avalon, we may want to show the municipal boundaries of the various cities and towns as polygons).
 
-##Metadata
+## Metadata
 
 Metadata is "data about the data". Metadata is a very important component of good data practice and is discusssed in chapter 10 of the MUN Biology R manual. If you are unfamilair with the concept of metadata, you can review it [here](https://ahurford.github.io/quant-guide-all-courses/data.html). With GIS data, the metadata are especially important, as they contain information about the coordinate reference system, or CRS (see chapter \@ref(projections)), as well as the attribute data, along with information about how and when the data were created. 
