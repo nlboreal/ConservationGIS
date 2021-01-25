@@ -1,0 +1,15 @@
+intro
+howto
+whatIs
+types-of-gis-data
+raster-data
+vector-data
+metadata
+vector
+raster
+projections
+rasterAlgebra
+extractingData
+sampling-data-from-a-raster-using-points
+sampling-data-from-a-raster-using-polygons
+PointsData

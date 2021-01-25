@@ -1,13 +1,12 @@
 --- 
-title: "GIS and Spatial Analysis for Conservation Biology Using R"
+title: "Conservation GIS Using R"
 author: "Dr. Yolanda Wiersma, Memorial University"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook #bookdown::html_document2
 documentclass: book
-biblio-style: apalike
 link-citations: false
-git-hub-repo: nlboreal/ConsBiol_SpatialAnalysis
+git-hub-repo: nlboreal/
 description: "Quantitative R skills for GIS and Spatial Analysis"
 ---
 
