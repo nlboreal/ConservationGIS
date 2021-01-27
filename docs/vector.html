@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. Yolanda Wiersma, Memorial University" />
 
 
-<meta name="date" content="2021-01-26" />
+<meta name="date" content="2021-01-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -182,7 +182,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We read these files in in a similar way as you read in a file like a csv file, but instead of using <code>read.csv</code> we use <code>st_read()</code></p>
 <p>Read in the boundary shapefile (recognizable by the .shp extension) for the Harvard forest</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="vector.html#cb3-1" aria-hidden="true" tabindex="-1"></a>HARV_boundary <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;HARV/harv_boundary.shp&quot;</span>)</span></code></pre></div>
-<pre><code>## Reading layer `harv_boundary&#39; from data source `C:\Users\ywiersma\Documents\BIOL4651\GIS_R_manual\ConsBiol_SpatialAnalysis\HARV\harv_boundary.shp&#39; using driver `ESRI Shapefile&#39;
+<pre><code>## Reading layer `harv_boundary&#39; from data source `C:\Users\ywiersma\Documents\BIOL4651\GIS_R_manual\ConservationGIS\HARV\harv_boundary.shp&#39; using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 1 feature and 8 fields
 ## geometry type:  MULTIPOLYGON
 ## dimension:      XY
@@ -190,7 +190,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## projected CRS:  WGS 84 / UTM zone 18N</code></pre>
 <p>Read in the the soil region shapefile for the Harvard forest</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="vector.html#cb5-1" aria-hidden="true" tabindex="-1"></a>HARV_soils <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;HARV/harv_soils.shp&quot;</span>)</span></code></pre></div>
-<pre><code>## Reading layer `harv_soils&#39; from data source `C:\Users\ywiersma\Documents\BIOL4651\GIS_R_manual\ConsBiol_SpatialAnalysis\HARV\harv_soils.shp&#39; using driver `ESRI Shapefile&#39;
+<pre><code>## Reading layer `harv_soils&#39; from data source `C:\Users\ywiersma\Documents\BIOL4651\GIS_R_manual\ConservationGIS\HARV\harv_soils.shp&#39; using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 246 features and 5 fields
 ## geometry type:  POLYGON
 ## dimension:      XY

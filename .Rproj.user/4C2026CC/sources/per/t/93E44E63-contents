@@ -13,7 +13,7 @@ library(ggplot2)
 ```
 
 ```{r, echo = FALSE}
-setwd("C:/Users/ywiersma/Documents/BIOL4651/GIS_R_manual/ConsBiol_SpatialAnalysis")
+setwd("C:/Users/ywiersma/Documents/BIOL4651/GIS_R_manual/ConservationGIS")
 ```
 
 Download the folder "HARV" to your working directory. If you do not remember how to check, and set your working directory, review section [4.2](https://ahurford.github.io/quant-guide-all-courses/rintro.html#working-directory). This folder contains data from the Harvard Research Forest. The vector data include a point file that represents sampling points, a line file that is the boundary of the resarch forest, and two polygon files that show the boundary of the research forest and the soil regions. 

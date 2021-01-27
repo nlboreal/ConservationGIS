@@ -1,6 +1,6 @@
 {
     "id": "31110CC4",
-    "path": "~/BIOL4651/GIS_R_manual/ConsBiol_SpatialAnalysis/07-RasterAlgebra.Rmd",
+    "path": "~/BIOL4651/GIS_R_manual/ConservationGIS/07-RasterAlgebra.Rmd",
     "project_path": "07-RasterAlgebra.Rmd",
     "type": "r_markdown",
     "hash": "2512014149",
@@ -16,11 +16,11 @@
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1611344837,
+    "lastKnownWriteTime": 1611753461,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1611344837276,
+    "last_content_update": 1611753461,
     "read_only": false,
     "read_only_alternatives": []
 }

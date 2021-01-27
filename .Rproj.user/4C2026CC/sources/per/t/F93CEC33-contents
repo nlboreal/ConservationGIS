@@ -15,7 +15,7 @@ library(ggplot2)
 If you didn't already set the working directory to where you have downloaded the HARV folder, do so now. This folder contains 4 .tif files. You may be familiar with .tif files as digital photographs. These are a special kind of .tif called a geotiff. Like a digital photograph, it has pixels, but it also has georeferenced data. 
 
 ```{r, echo = FALSE}
-#setwd("C:/Users/ywiersma/Documents/BIOL4651/GIS_R_manual/ConsBiol_SpatialAnalysis/HARV")
+#setwd("C:/Users/ywiersma/Documents/BIOL4651/GIS_R_manual/ConservationGIS")
 ```
 
 We will read in the raster that represents the digital terrain model (dtm for short) - in this raster, each pixel gives the elevation above sea level of that point. We use the ```read_stars``` function.
@@ -49,7 +49,7 @@ Let's try making another map that combines raster and vector data. Download the 
 1. SJER_dtmFULL.tif (a raster of the digital terrain model showing elevations)
 
 ```{r, echo = FALSE}
-#setwd("C:/Users/ywiersma/Documents/BIOL4651/GIS_R_manual/ConsBiol_SpatialAnalysis/SJER")
+#setwd("C:/Users/ywiersma/Documents/BIOL4651/GIS_R_manual/ConservationGIS")
 ```
 
 ```{r}

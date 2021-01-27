@@ -24,7 +24,7 @@
 <meta name="author" content="Dr. Yolanda Wiersma, Memorial University" />
 
 
-<meta name="date" content="2021-01-26" />
+<meta name="date" content="2021-01-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -178,7 +178,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>First we need to load the csv plots data as an `<code>sf</code> object and display it</p>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="PointsData.html#cb44-1" aria-hidden="true" tabindex="-1"></a>plots_sjer_csv <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;SJER/sjer_plots.csv&quot;</span>, <span class="at">options =</span> <span class="fu">c</span>(<span class="st">&quot;X_POSSIBLE_NAMES=longitude&quot;</span>, <span class="st">&quot;Y_POSSIBLE_NAMES=latitude&quot;</span>), <span class="at">crs =</span> <span class="dv">4326</span>)</span></code></pre></div>
 <pre><code>## options:        X_POSSIBLE_NAMES=longitude Y_POSSIBLE_NAMES=latitude 
-## Reading layer `sjer_plots&#39; from data source `C:\Users\ywiersma\Documents\BIOL4651\GIS_R_manual\ConsBiol_SpatialAnalysis\SJER\sjer_plots.csv&#39; using driver `CSV&#39;
+## Reading layer `sjer_plots&#39; from data source `C:\Users\ywiersma\Documents\BIOL4651\GIS_R_manual\ConservationGIS\SJER\sjer_plots.csv&#39; using driver `CSV&#39;
 ## Simple feature collection with 7 features and 4 fields
 ## geometry type:  POINT
 ## dimension:      XY

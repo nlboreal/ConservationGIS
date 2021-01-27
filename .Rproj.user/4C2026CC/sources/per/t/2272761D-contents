@@ -3,7 +3,7 @@
 Often you will have a .csv file with x and y coordinates (either in lat/lon or UTM) that you sampled in the field and want to load into a GIS so that you can extract data from other GIS layers. Here's how to do it. We'll jump back to the San Joaquin Data set, so reset your working directory to the SJER folder (you're getting lots of practice with working directories this way!)
 
 ```{r, echo = FALSE}
-#setwd("C:/Users/ywiersma/Documents/BIOL4651/GIS_R_manual/ConsBiol_SpatialAnalysis/SJER")
+#setwd("C:/Users/ywiersma/Documents/BIOL4651/GIS_R_manual/ConservationGIS/SJER")
 ```
 
 First we need to load the csv plots data as an ````sf``` object and display it

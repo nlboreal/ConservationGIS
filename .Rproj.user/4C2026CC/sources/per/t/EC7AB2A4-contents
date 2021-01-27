@@ -36,10 +36,9 @@ You could now take this data and test whether canopy height is significantly dif
 
 At other times, researchers may want to sample data from a raster using a polygon. For example, we might want to know what the maximum elevation within the boundaries of a protected area is. 
 
-To do these exercises, we're going to change back to Harvard forest data set. Set your working directory to the HARV folder.
-
+To do these exercises, we're going to go back to Harvard forest data set. 
 ```{r, echo = FALSE}
-#setwd("C:/Users/ywiersma/Documents/BIOL4651/GIS_R_manual/ConsBiol_SpatialAnalysis/HARV")
+#setwd("C:/Users/ywiersma/Documents/BIOL4651/GIS_R_manual/ConservationGIS/HARV")
 ```
 
 We're going to find out what the maximum elevation is in each of the soil drainage polygons.
