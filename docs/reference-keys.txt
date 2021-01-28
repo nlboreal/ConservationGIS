@@ -1,4 +1,4 @@
-manual-for-the-gis-module-in-bil-46517944-conservation-in-practice
+this-is-a-manual-for-the-gis-module-in-biol-46517944-conservation-in-practice
 intro
 howto
 whatIs
