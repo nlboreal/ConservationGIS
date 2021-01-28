@@ -1,0 +1,85 @@
+# Extracting Data from a Raster {#extractingData}
+
+A common thing that ecologists and conservation biologists want to get data for their sample sites from different GIS layers and then use these data in different models or statistical tests.
+
+## Sampling data from a raster using points
+
+We use the ```aggregate``` function to get data from the canopy raster
+
+```{r}
+plot_canopy_height <- aggregate(SJER_canopy, SJER_plots_utm, mean, as_points = FALSE)
+plot_canopy_height$SJER_dsmCrop.tif
+```
+
+To link this data into the attribute data we will use the ```mutate``` function in the package ```dplyr```. We have a lab in BIOL 1002 that teaches some of the basics of the dplyr package. If you're not familiar with that package, just use the code below.
+
+```{r, message = FALSE}
+library(dplyr)
+```
+
+```{r}
+mutate(SJER_plots_utm, canopyHeight = plot_canopy_height$SJER_dsmCrop.tif)
+```
+
+If you examine the SJER_plots_utm data, you will see that it now has the canopy height data in the attribute data. You'll notice that there is also an attribute for ```plot_type```. We can make a map that symbolizes the sample points by the plot type like this:
+
+```{r}
+ggplot() +
+  geom_stars(data = SJER_canopy) +
+  geom_sf(data = SJER_plots_utm, mapping = aes(color = plot_type))
+```
+
+You could now take this data and test whether canopy height is significantly different at the tower sampling points or at the distributed sampling points. We won't do that just now; we'll do some statistics on these data in a different module. 
+
+
+## Sampling data from a raster using polygons
+
+At other times, researchers may want to sample data from a raster using a polygon. For example, we might want to know what the maximum elevation within the boundaries of a protected area is. 
+
+To do these exercises, we're going to go back to Harvard forest data set. 
+```{r, echo = FALSE}
+#setwd("C:/Users/ywiersma/Documents/BIOL4651/GIS_R_manual/ConservationGIS/HARV")
+```
+
+We're going to find out what the maximum elevation is in each of the soil drainage polygons.
+
+First, check that the two layers have the same co-ordinate reference system:
+
+```{r}
+st_crs(HARV_dtm)
+st_crs(HARV_soils)
+```
+
+The ID code at the end of each file is identical (```32618```), so you can overlay these layers and extract the data. If you are not convinced, try mapping them together.
+
+Then we use the same ```aggregate``` function as we did to extract the data from the raster to points. Note, that when you extract with a polygon, there are many pixels within the polygon. You can specify different values you want to extract from the pixels within the polygon, for example, maximum, minimum, mean. 
+
+```{r}
+drainage_max_elev <- aggregate(HARV_dtm, HARV_soils, max, as_points = FALSE)
+drainage_max_elev$HARv_dtmFull.tif
+```
+
+Here we'll use the ```mutate``` function and create a new shapefile
+
+```{r}
+elevation_by_drainage <- mutate(HARV_soils, elevation = drainage_max_elev$HARV_dtmFull.tif)
+```
+
+Now we can plot the soil drainage basins and colour code them by their maximum height.
+
+```{r}
+ggplot() +
+  geom_sf(data = elevation_by_drainage, mapping = aes(fill = elevation)) +
+  scale_fill_viridis_c()
+```
+
+If you want to change the map display so the coordinates on the map boundary are in UTM, you can do it like so:
+
+```{r}
+ggplot() +
+  geom_sf(data = elevation_by_drainage, mapping = aes(fill = elevation)) +
+  coord_sf(datum = st_crs(HARV_dtm)) + 
+  scale_fill_viridis_c()
+```
+
+What if you have sampled points in the field with a handheld gps and only have a csv file with x and y coordinates? How can you get the data? Go to chapter \@ref(PointsData) to find out! 

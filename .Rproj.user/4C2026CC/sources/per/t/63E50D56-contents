@@ -1,0 +1,24 @@
+# Dealing with Projections {#projections}
+
+At the end of the vectors \@ref(vector) chapter, we tried to map the plots layer for the San Joaquin Experimental Range over the digital terrain model (dtm). The two layers didn't display properly, so something went wrong. To see what happened, we need to have a look at the co-ordinate reference system (crs) for the two layers. Use the ```st_crs``` command to see what this is for each layer.
+
+```{r}
+st_crs(SJER_plots)
+st_crs(SJER_dtm)
+```
+
+Scroll through the results and compare the last set of numbers at the end of the file in the ID[] line. You should note that the SJER_plots file as an ID of 4325 and that the SJER_dtm has an ID of 32611. This indicates that the two layers have different coordinate systems. You can verify this by plotting each separately and cheeking the coordinate system labels on the map edges. The labels on the dtm are in UTM units, while the labels on the plots are in latitude and longitude. We need to convert the coordinate reference system (crs) of one of the layers to match the other. We use the ```st_transform``` function to create a new plots layer which has a projection system that matches the dtm layer.
+
+```{r}
+SJER_plots_utm <- st_transform(SJER_plots, st_crs(SJER_dtm))
+```
+
+Now you should be able to plot the two layers together
+
+```{r}
+ggplot() +
+  geom_stars(data = SJER_dtm) +
+  geom_sf(data = SJER_plots_utm)
+```
+
+Now that you have the two data sets aligned, you can extract the elevation data for each point, which is explained in the chapter on extracting data \@ref(extractingData). Before you do that, complete the exercises in the next chapter \@ref(rasterAlgebra).  

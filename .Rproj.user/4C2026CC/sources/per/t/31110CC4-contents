@@ -1,0 +1,23 @@
+# Raster Algebra {#rasterAlgebra}
+
+It is possible to analyse and combine two different rasters. The second raster layer in the SJER folder is a digital surface model (dsm) which is a data set taken using Lidar data that measures the height of the objects (above sea level) of objects on the earth. Let's load that layer.
+
+```{r}
+SJER_dsm <- read_stars("SJER/SJER_dsmCROP.tif")
+```
+
+By subtracting the dtm (elevation of the ground above sea level) from the dsm (elevation of the objects on the ground above sea level) we can create a new raster that represents the height of those objects above the ground. Since this layer is in a forest, we can infer that this new layer is the canopy height. However, the dsm layer covers a smaller extent that the dtm, so we'll also read in the cropped .tif file for the dtm
+
+```{r}
+SJER_dtm_cropped <- read_stars("SJER/SJER_dtmCROP.tif")
+```
+
+Now we can do the raster algebra: 
+
+```{r}
+SJER_canopy = SJER_dsm - SJER_dtm_cropped
+```
+
+Raster algebra can use any algebraic functions and involve one or more raster layers - for example if we wanted to convert the units of the canopy layer from metres to centimetres, we could simply multiply the SJER_canopy layer by 10. Or if you had a raster of canopy height in 2000 and canopy height in 2020, you could subtract one from the other to find out how much the tree height changed over 20 years in different parts of the landscape. 
+
+Now we can extract the canopy height data from our sample locations - see chapter  \@ref(extractingData). 

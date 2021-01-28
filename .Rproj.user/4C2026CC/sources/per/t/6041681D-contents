@@ -1,0 +1,16 @@
+--- 
+title: "Conservation GIS Using R"
+author: "Dr. Yolanda Wiersma, Memorial University"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook #bookdown::html_document2
+documentclass: book
+link-citations: false
+git-hub-repo: nlboreal/ConservationGIS
+description: "Quantitative R skills for GIS and Spatial Analysis"
+---
+
+# This is a manual for the GIS Module in BIOL 4651/7944 (Conservation in Practice)
+
+It will teach some of the basics of spatial and GIS analysis using R.
+

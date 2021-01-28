@@ -1,0 +1,33 @@
+# What is GIS? {#whatIs}
+
+GIS (Geographic Information Systems) is defined as "A geographic information system (GIS) is a framework for gathering, managing, and analyzing data. Rooted in the science of geography, GIS integrates many types of data. It analyzes spatial location and organizes layers of information into visualizations using maps and 3D scenes. With this unique capability, GIS reveals deeper insights into data, such as patterns, relationships, and situations—helping users make smarter decisions." (ESRI.com)
+
+Many people think GIS is simply software for making maps. While you can make maps with a GIS, that is not the real purpose (to make really great maps, one would use cartographic software). A GIS is a spatial database. It allows you to store, organize, query, and analyze data - but not just any data - data in a GIS have specific spatial reference. Thus, the spatial location of data is linked to the attributes, and data can be analyzed based on both the spatial location AND the attributes of the data themselves. 
+
+GIS is very powerful software and is used in many sectors of society. The biggest users of GIS software are in marketing, urban/municipal planning, and the military. Conservation and ecology researchers are actually in a small minority of GIS users.
+
+This manual will introduce some of the commont things that conservation biologists will want to do with spatial data. These include:
+
+1. visualizing data in a map
+1. using sampling points to sample map data
+1. using polygons to sample map data
+
+As well, this manual will introduce some of the common issues and challenges when dealing with spatial data, including challenges with projections, map symbology, scale issues, and data organization. 
+
+## Types of GIS Data
+
+GIS data are divided into two categories, raster data and vector data. Another important component of GIS data is the metadata.
+
+## Raster Data
+
+Raster data represent the spatial data as a map made of pixels (sometimes called a "raster"). Each pixel has a unique value, in addition to a x, y coordinate. Raster data may be continuous, and represnet the actual value of the feature in the real world (e.g., soil pH) or raster data may be categorical, with numbers standing in for categorical data (e.g., 3 = decidous forest). In this case, the metadata should include a description of what the pixel data represent.
+
+## Vector Data
+
+Vector data represent the spatial data as either points, lines or polygons. Each feature in the dataset has georeferenced data (its locatoin along an x, y coordinate system) as well as attribute data. The attribute data can have many files. For example, a polygon feature representing protected areas might have fields for the name of the protected area, the year it was established, its size, the type of protected area (e.g., national, provincial or state park), and other data. Each line (or record) in the attribute data file is linked to a single feature in the data set. 
+
+There are no rules for what kind of data must be represented as either points, lines or polygons, however there are some standard (and farily obvious) practices. Features that are generally linear in the real world (even if they are not perfectly one-dimensional), such as roads, rivers, and railways, are usually represented by lines. Sample points and single entities (e.g., single trees) are reprsented as points. Features that have 2 dimensions, such as parcels of land, are represented as polygons. Sometimes a feature may be shown as a point at one spatial scale (e.g., at the scale of a continent, cities are shown as points) but as polygons at another spatial scale (e.g., if we zoom in on the Northeast Avalon, we may want to show the municipal boundaries of the various cities and towns as polygons).
+
+## Metadata
+
+Metadata is "data about the data". Metadata is a very important component of good data practice and is discusssed in chapter 10 of the MUN Biology R manual. If you are unfamilair with the concept of metadata, you can review it [here](https://ahurford.github.io/quant-guide-all-courses/data.html). With GIS data, the metadata are especially important, as they contain information about the coordinate reference system, or CRS (see chapter \@ref(projections)), as well as the attribute data, along with information about how and when the data were created. 
