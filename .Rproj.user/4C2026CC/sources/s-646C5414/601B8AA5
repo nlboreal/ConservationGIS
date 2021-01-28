@@ -1,19 +1,19 @@
 {
-    "id": "62479DD0",
-    "path": "~/BIOL4651/GIS_R_manual/ConservationGIS/03-WhatIsGIS.Rmd",
-    "project_path": "03-WhatIsGIS.Rmd",
-    "type": "r_markdown",
-    "hash": "3059429882",
+    "id": "601B8AA5",
+    "path": "~/BIOL4651/GIS_R_manual/ConservationGIS/_output.yml",
+    "project_path": "_output.yml",
+    "type": "yaml",
+    "hash": "0",
     "contents": "",
     "dirty": false,
-    "created": 1611330543080.0,
+    "created": 1611605291199.0,
     "source_on_save": false,
-    "relative_order": 11,
+    "relative_order": 12,
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "16,8",
-        "scrollLine": "7"
+        "cursorPosition": "10,28",
+        "scrollLine": "0"
     },
     "folds": "",
     "lastKnownWriteTime": 1611753461,

@@ -6,9 +6,10 @@ site: bookdown::bookdown_site
 output: bookdown::gitbook #bookdown::html_document2
 documentclass: book
 link-citations: false
-git-hub-repo: "nlboreal/ConsBiol_SpatialAnalysis"
+git-hub-repo: nlboreal/ConservationGIS
 description: "Quantitative R skills for GIS and Spatial Analysis"
 ---
 
+# Manual for the GIS Module in BIL 4651/7944 (Conservation in Practice)
 
 

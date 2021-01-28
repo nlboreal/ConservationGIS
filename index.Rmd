@@ -10,6 +10,6 @@ git-hub-repo: nlboreal/ConservationGIS
 description: "Quantitative R skills for GIS and Spatial Analysis"
 ---
 
-# A first-level title is needed!!
+# Manual for the GIS Module in BIL 4651/7944 (Conservation in Practice)
 
 

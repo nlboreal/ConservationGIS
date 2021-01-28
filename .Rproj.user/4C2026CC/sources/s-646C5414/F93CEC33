@@ -3,7 +3,7 @@
     "path": "~/BIOL4651/GIS_R_manual/ConservationGIS/05-Rasters.Rmd",
     "project_path": "05-Rasters.Rmd",
     "type": "r_markdown",
-    "hash": "805293742",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1611258136907.0,
@@ -13,14 +13,14 @@
         "source_window_id": "",
         "Source": "Source",
         "cursorPosition": "51,73",
-        "scrollLine": "45"
+        "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1611759570,
+    "lastKnownWriteTime": 1611862257,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1611759570378,
+    "last_content_update": 1611862257,
     "read_only": false,
     "read_only_alternatives": []
 }

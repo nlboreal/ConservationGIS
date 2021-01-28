@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>8 Raster Algebra | Conservation GIS Using R</title>
+  <title>Conservation GIS Using R</title>
   <meta name="description" content="Quantitative R skills for GIS and Spatial Analysis" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="8 Raster Algebra | Conservation GIS Using R" />
+  <meta property="og:title" content="Conservation GIS Using R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="8 Raster Algebra | Conservation GIS Using R" />
+  <meta name="twitter:title" content="Conservation GIS Using R" />
   
   <meta name="twitter:description" content="Quantitative R skills for GIS and Spatial Analysis" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="projections.html"/>
-<link rel="next" href="extractingData.html"/>
+
+<link rel="next" href="intro.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -173,16 +173,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="rasterAlgebra" class="section level1" number="8">
-<h1><span class="header-section-number">8</span> Raster Algebra</h1>
-<p>It is possible to analyse and combine two different rasters. The second raster layer in the SJER folder is a digital surface model (dsm) which is a data set taken using Lidar data that measures the height of the objects (above sea level) of objects on the earth. Let’s load that layer.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="rasterAlgebra.html#cb26-1" aria-hidden="true" tabindex="-1"></a>SJER_dsm <span class="ot">&lt;-</span> <span class="fu">read_stars</span>(<span class="st">&quot;SJER/SJER_dsmCROP.tif&quot;</span>)</span></code></pre></div>
-<p>By subtracting the dtm (elevation of the ground above sea level) from the dsm (elevation of the objects on the ground above sea level) we can create a new raster that represents the height of those objects above the ground. Since this layer is in a forest, we can infer that this new layer is the canopy height. However, the dsm layer covers a smaller extent that the dtm, so we’ll also read in the cropped .tif file for the dtm</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="rasterAlgebra.html#cb27-1" aria-hidden="true" tabindex="-1"></a>SJER_dtm_cropped <span class="ot">&lt;-</span> <span class="fu">read_stars</span>(<span class="st">&quot;SJER/SJER_dtmCROP.tif&quot;</span>)</span></code></pre></div>
-<p>Now we can do the raster algebra:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="rasterAlgebra.html#cb28-1" aria-hidden="true" tabindex="-1"></a>SJER_canopy <span class="ot">=</span> SJER_dsm <span class="sc">-</span> SJER_dtm_cropped</span></code></pre></div>
-<p>Raster algebra can use any algebraic functions and involve one or more raster layers - for example if we wanted to convert the units of the canopy layer from metres to centimetres, we could simply multiply the SJER_canopy layer by 10. Or if you had a raster of canopy height in 2000 and canopy height in 2020, you could subtract one from the other to find out how much the tree height changed over 20 years in different parts of the landscape.</p>
-<p>Now we can extract the canopy height data from our sample locations - see chapter <a href="extractingData.html#extractingData">9</a>.</p>
+<div id="header">
+<h1 class="title">Conservation GIS Using R</h1>
+<p class="author"><em>Dr. Yolanda Wiersma, Memorial University</em></p>
+<p class="date"><em>2021-01-28</em></p>
+</div>
+<div id="manual-for-the-gis-module-in-bil-46517944-conservation-in-practice" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Manual for the GIS Module in BIL 4651/7944 (Conservation in Practice)</h1>
 
 </div>
             </section>
@@ -190,8 +187,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="projections.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="extractingData.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+
+<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
