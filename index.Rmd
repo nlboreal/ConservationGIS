@@ -7,7 +7,7 @@ output: bookdown::gitbook #bookdown::html_document2
 documentclass: book
 link-citations: false
 git-hub-repo: nlboreal/ConservationGIS
-description: "Quantitative R skills for GIS and Spatial Analysis"
+description: "R skills for GIS and Spatial Analysis"
 ---
 
 # This is a manual for Advanced Biology students in Landscape Ecology and Conservation Biology
