@@ -10,7 +10,7 @@ git-hub-repo: nlboreal/ConservationGIS
 description: "Quantitative R skills for GIS and Spatial Analysis"
 ---
 
-# This is a manual for the GIS Module in BIOL 4651/7944 (Conservation in Practice)
+# This is a manual for Advanced Biology students in Landscape Ecology and Conservation Biology
 
 It will teach some of the basics of spatial and GIS analysis using R.
 
