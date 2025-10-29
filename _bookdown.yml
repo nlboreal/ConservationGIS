@@ -1,4 +1,4 @@
-book_filename: "ConservationGIS"
+book_filename: "GIS in R for Landscape Ecology"
 language:
   ui:
 delete_merged_file: true
